@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gyumin.Datacom
 {
-    class Program
+    class Simulator
     {
         static void Main(string[] args)
         {
