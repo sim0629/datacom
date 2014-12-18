@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\Medium.cs" />
+    <Compile Include="Models\Node.cs" />
     <Compile Include="Simulator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
