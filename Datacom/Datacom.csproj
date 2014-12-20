@@ -50,6 +50,7 @@
     <Compile Include="Models\DcfNode.cs" />
     <Compile Include="Models\Medium.cs" />
     <Compile Include="Models\Node.cs" />
+    <Compile Include="Models\Packet.cs" />
     <Compile Include="Simulator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -30,7 +30,7 @@ namespace Gyumin.Datacom.Models
         {
             backoff = failed ? Math.Min(backoff * 2 + 1, Constants.CW_MAX) : Constants.CW_MIN;
             int sample = DiscreteUniform.Sample(0, backoff);
-            timeToWait = !failed && queue > 0 ? Constants.SIFS_TIME : Constants.DIFS_TIME + sample * Constants.SLOT_TIME;
+            timeToWait = !failed && queue.Count > 0 ? Constants.SIFS_TIME : Constants.DIFS_TIME + sample * Constants.SLOT_TIME;
             isWaitingAck = false;
         }
 
@@ -38,7 +38,7 @@ namespace Gyumin.Datacom.Models
         {
             base.Next(elapsed);
 
-            if (queue <= 0) return;
+            if (queue.Count <= 0) return;
             if (timeToTransmit > 0)
             {
                 timeToTransmit--;
@@ -57,7 +57,7 @@ namespace Gyumin.Datacom.Models
                     {
                         if (medium.IsAcked)
                         {
-                            queue--;
+                            Dequeue(elapsed);
                             WaitForTransmit(false);
                         }
                         else // fail

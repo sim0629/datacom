@@ -56,7 +56,7 @@ namespace Gyumin.Datacom.Models
                     {
                         if (medium.IsAcked)
                         {
-                            queue--;
+                            Dequeue(elapsed);
                             WaitForTransmit(false);
                         }
                         else // fail
@@ -70,7 +70,7 @@ namespace Gyumin.Datacom.Models
             {
                 if (!isWaitingAck)
                 {
-                    if (queue > 0 && medium.IsIdle)
+                    if (queue.Count > 0 && medium.IsIdle)
                     {
                         timeToTransmit = Constants.DATA_TRANS_TIME;
                         medium.Request();

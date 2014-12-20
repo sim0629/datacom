@@ -12,7 +12,7 @@ namespace Gyumin.Datacom.Models
     {
         protected Medium medium;
         protected Poisson poisson;
-        protected int queue;
+        protected readonly Queue<Packet> queue = new Queue<Packet>();
         protected HashSet<int> samples;
 
         public Node(Medium medium, int lambda)
@@ -31,15 +31,32 @@ namespace Gyumin.Datacom.Models
 
         public virtual void Next(int elapsed)
         {
-            elapsed %= Constants.ONE_SECOND_TIME;
-            if (elapsed == 0)
+            var moded = elapsed % Constants.ONE_SECOND_TIME;
+            if (moded == 0)
             {
                 Generate();
             }
-            if (samples.Contains(elapsed))
+            if (samples.Contains(moded))
             {
-                queue++;
+                queue.Enqueue(new Packet(elapsed));
             }
         }
+
+        protected void Dequeue(int completedAt)
+        {
+            var packet = queue.Dequeue();
+            var delay = completedAt - packet.CreatedAt;
+            Delay += delay;
+        }
+
+        #region Statistics
+
+        public double Delay
+        {
+            get;
+            private set;
+        }
+
+        #endregion Statistics
     }
 }
