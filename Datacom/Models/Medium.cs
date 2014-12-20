@@ -39,6 +39,7 @@ namespace Gyumin.Datacom.Models
                     {
                         timeToTransmit = Constants.ACK_TRANS_TIME;
                         acking = true;
+                        AckCount++;
                     }
                     voltageLevel = 0;
                 }
@@ -72,5 +73,15 @@ namespace Gyumin.Datacom.Models
             voltageLevel++;
             return true;
         }
+
+        #region Statistics
+
+        public int AckCount
+        {
+            get;
+            private set;
+        }
+
+        #endregion Statistics
     }
 }
