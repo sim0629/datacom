@@ -13,7 +13,7 @@ namespace Gyumin.Datacom.Models
         protected Medium medium;
         protected Poisson poisson;
         protected int queue;
-        protected int[] samples;
+        protected HashSet<int> samples;
 
         public Node(Medium medium, int lambda)
         {
@@ -23,9 +23,10 @@ namespace Gyumin.Datacom.Models
 
         protected void Generate()
         {
-            int amount = poisson.Sample();
-            samples = new int[amount];
-            DiscreteUniform.Samples(samples, 0, Constants.ONE_SECOND_TIME - 1);
+            var amount = poisson.Sample();
+            var array = new int[amount];
+            DiscreteUniform.Samples(array, 0, Constants.ONE_SECOND_TIME - 1);
+            samples = new HashSet<int>(array);
         }
 
         public virtual void Next(int elapsed)
