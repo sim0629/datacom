@@ -71,12 +71,19 @@ namespace Gyumin.Datacom.Models
         {
             if (IsBusy) return false;
             voltageLevel++;
+            RequestCount++;
             return true;
         }
 
         #region Statistics
 
         public int AckCount
+        {
+            get;
+            private set;
+        }
+
+        public int RequestCount
         {
             get;
             private set;
