@@ -59,6 +59,24 @@ namespace Gyumin.Datacom
 
         static void Main(string[] args)
         {
+            var ts = new NodeType[] { NodeType.Backoff, NodeType.Dcf };
+            var ns = new int[] { 1, 2, 5, 10, 20, 30, 40, 50 };
+            foreach (var n in ns)
+            {
+                var begin = 10d / n;
+                var step = 100d / n;
+                var end = 1000d / n;
+                for (var l = begin; l < end + step / 2;)
+                {
+                    foreach (var t in ts)
+                    {
+                        var simulator = new Simulator(n, l, t);
+                        simulator.Run();
+                    }
+                    if (l < step) l *= Math.Pow(10d, 1d / 3);
+                    else l += step;
+                }
+            }
         }
     }
 }
