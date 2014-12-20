@@ -15,7 +15,7 @@ namespace Gyumin.Datacom.Models
         protected int timeToTransmit;
         protected int timeToWait;
 
-        public DcfNode(Medium medium, int lambda)
+        public DcfNode(Medium medium, double lambda)
             : base(medium, lambda)
         {
         }

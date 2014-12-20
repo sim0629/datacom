@@ -15,7 +15,7 @@ namespace Gyumin.Datacom
         private Medium medium;
         private List<Node> nodes;
 
-        public Simulator(int n, int lambda, NodeType type)
+        public Simulator(int n, double lambda, NodeType type)
         {
             Console.WriteLine(n);
             Console.WriteLine(lambda);

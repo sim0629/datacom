@@ -15,7 +15,7 @@ namespace Gyumin.Datacom.Models
         protected int timeToTransmit;
         protected int timeToWait;
 
-        public BackoffNode(Medium medium, int lambda)
+        public BackoffNode(Medium medium, double lambda)
             : base(medium, lambda)
         {
         }

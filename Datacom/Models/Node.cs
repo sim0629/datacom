@@ -15,7 +15,7 @@ namespace Gyumin.Datacom.Models
         protected readonly Queue<Packet> queue = new Queue<Packet>();
         protected HashSet<int> samples;
 
-        public Node(Medium medium, int lambda)
+        public Node(Medium medium, double lambda)
         {
             this.medium = medium;
             poisson = new Poisson(lambda);
