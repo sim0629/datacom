@@ -15,7 +15,7 @@ namespace Gyumin.Datacom.Models
         private const int DATA_PACKET_SIZE_B = 1024;
         private const int ACK_PACKET_SIZE_B = 32;
         private const int BITS_PER_10US = 100; // 10 Mbps
-        private const int SIMUL_DURATION_TIME_S = 60 * 60; // 1 hour
+        private const int SIMUL_DURATION_TIME_S = 60; // 1 min.
 
         public const int ONE_SECOND_TIME = 1000 * 1000 / UNIT_TIME_US;
         public const int SIFS_TIME = SIFS_TIME_US / UNIT_TIME_US;
